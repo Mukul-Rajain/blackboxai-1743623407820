@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission | PG Dissertation Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .dropzone {
+            border: 2px dashed #cbd5e0;
+            transition: all 0.3s ease;
+        }
+        .dropzone.active {
+            border-color: #4299e1;
+            background-color: #ebf8ff;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-blue-800 text-white">
+            <div class="p-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-graduation-cap text-2xl"></i>
+                    <span class="text-xl font-semibold">PGDMS</span>
+                </div>
+            </div>
+            <nav class="mt-6">
+                <div>
+                    <a href="dashboard.html" class="flex items-center px-4 py-3 text-blue-200 hover:bg-blue-600">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-200 hover:bg-blue-600">
+                        <i class="fas fa-book mr-3"></i>
+                        My Dissertation
+                    </a>
+                    <a href="submission.html" class="flex items-center px-4 py-3 bg-blue-700 text-white">
+                        <i class="fas fa-upload mr-3"></i>
+                        Submit
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-200 hover:bg-blue-600">
+                        <i class="fas fa-comments mr-3"></i>
+                        Feedback
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-blue-200 hover:bg-blue-600">
+                        <i class="fas fa-cog mr-3"></i>
+                        Settings
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Navigation -->
+            <header class="bg-white shadow-sm">
+                <div class="flex justify-between items-center px-6 py-4">
+                    <h1 class="text-xl font-semibold text-gray-800">Dissertation Submission</h1>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="flex items-center">
+                            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User profile">
+                            <span class="ml-2 text-sm font-medium text-gray-700">John Doe</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Submission Content -->
+            <main class="p-6">
+                <div class="max-w-3xl mx-auto">
+                    <div class="card">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-6">Submit Your Dissertation</h2>
+                        
+                        <!-- Progress Steps -->
+                        <div class="mb-8">
+                            <div class="flex items-center">
+                                <div class="flex items-center text-blue-600 relative">
+                                    <div class="rounded-full h-8 w-8 bg-blue-600 flex items-center justify-center">
+                                        <span class="text-white">1</span>
+                                    </div>
+                                    <div class="absolute top-0 -ml-10 text-center mt-10 w-32 text-xs font-medium text-blue-600">Document Upload</div>
+                                </div>
+                                <div class="flex-auto border-t-2 border-gray-200"></div>
+                                <div class="flex items-center text-gray-500">
+                                    <div class="rounded-full h-8 w-8 bg-gray-200 flex items-center justify-center">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="absolute top-0 -ml-10 text-center mt-10 w-32 text-xs font-medium text-gray-500">Metadata</div>
+                                </div>
+                                <div class="flex-auto border-t-2 border-gray-200"></div>
+                                <div class="flex items-center text-gray-500">
+                                    <div class="rounded-full h-8 w-8 bg-gray-200 flex items-center justify-center">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="absolute top-0 -ml-10 text-center mt-10 w-32 text-xs font-medium text-gray-500">Confirmation</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div id="upload-section">
+                            <h3 class="text-lg font-medium text-gray-800 mb-4">Upload Dissertation Document</h3>
+                            <p class="text-sm text-gray-500 mb-4">Please upload your dissertation in PDF format (max 50MB).</p>
+                            
+                            <div id="dropzone" class="dropzone rounded-lg p-8 text-center cursor-pointer mb-4">
+                                <div class="flex flex-col items-center justify-center">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-blue-500 mb-2"></i>
+                                    <p class="text-gray-600 font-medium">Drag and drop your file here</p>
+                                    <p class="text-gray-400 text-sm">or</p>
+                                    <button class="btn-primary mt-2">
+                                        <i class="fas fa-folder-open mr-2"></i> Browse Files
+                                    </button>
+                                </div>
+                                <input type="file" id="file-input" class="hidden" accept=".pdf">
+                            </div>
+                            
+                            <div id="file-info" class="hidden bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                                        <div>
+                                            <p class="font-medium" id="file-name">dissertation.pdf</p>
+                                            <p class="text-xs text-gray-500" id="file-size">2.4 MB</p>
+                                        </div>
+                                    </div>
+                                    <button id="remove-file" class="text-red-500 hover:text-red-700">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                        <div id="upload-progress" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1 text-right" id="upload-status">Ready to upload</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 flex justify-end">
+                                <button id="next-btn" class="btn-primary opacity-50 cursor-not-allowed" disabled>
+                                    Next <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // File upload handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropzone = document.getElementById('dropzone');
+            const fileInput = document.getElementById('file-input');
+            const fileInfo = document.getElementById('file-info');
+            const fileName = document.getElementById('file-name');
+            const fileSize = document.getElementById('file-size');
+            const removeFile = document.getElementById('remove-file');
+            const uploadProgress = document.getElementById('upload-progress');
+            const uploadStatus = document.getElementById('upload-status');
+            const nextBtn = document.getElementById('next-btn');
+
+            // Handle drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                dropzone.classList.add('active');
+            }
+
+            function unhighlight() {
+                dropzone.classList.remove('active');
+            }
+
+            // Handle file drop
+            dropzone.addEventListener('drop', handleDrop, false);
+            dropzone.addEventListener('click', () => fileInput.click());
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles(files);
+            }
+
+            // Handle file selection
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+
+            // Handle file processing
+            function handleFiles(files) {
+                if (files.length > 0) {
+                    const file = files[0];
+                    
+                    // Validate file type
+                    if (file.type !== 'application/pdf') {
+                        alert('Please upload a PDF file.');
+                        return;
+                    }
+                    
+                    // Validate file size (50MB max)
+                    if (file.size > 50 * 1024 * 1024) {
+                        alert('File size exceeds 50MB limit.');
+                        return;
+                    }
+                    
+                    // Display file info
+                    fileName.textContent = file.name;
+                    fileSize.textContent = formatFileSize(file.size);
+                    fileInfo.classList.remove('hidden');
+                    nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    nextBtn.removeAttribute('disabled');
+                    
+                    // Simulate upload progress
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += Math.random() * 10;
+                        if (progress >= 100) {
+                            progress = 100;
+                            clearInterval(interval);
+                            uploadStatus.textContent = 'Upload complete';
+                        } else {
+                            uploadStatus.textContent = 'Uploading...';
+                        }
+                        uploadProgress.style.width = `${progress}%`;
+                    }, 200);
+                }
+            }
+            
+            // Remove file
+            removeFile.addEventListener('click', function() {
+                fileInput.value = '';
+                fileInfo.classList.add('hidden');
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                nextBtn.setAttribute('disabled', 'disabled');
+                uploadProgress.style.width = '0%';
+                uploadStatus.textContent = 'Ready to upload';
+            });
+            
+            // Format file size
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+        });
+    </script>
+</body>
+</html>
